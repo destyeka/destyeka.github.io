@@ -1,9 +1,39 @@
 ---
-// Frontmatter (Server-side JS)
-// Imports go here
-import '../styles/global.css';
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro'; // Use the Astro Navbar we made
+import ProjectCard from '../components/ProjectCard.astro';
 ---
 
-<h1 class="text-2xl font-bold text-red-500 m-10">
-  Portfolio Initialized.
-</h1>
+<Layout title="Your Name - Portfolio">
+    <Navbar />
+    
+    <main class="max-w-5xl mx-auto px-6">
+        
+        <section class="py-24 md:py-32">
+            <h1 class="text-5xl md:text-7xl font-bold mb-6">
+                Design Engineer.
+            </h1>
+            <p class="text-xl text-gray-400 max-w-2xl">
+                I build pixel-perfect digital experiences.
+            </p>
+        </section>
+
+        <section id="work">
+            <ProjectCard 
+                title="Sign Language Translator"
+                description="A computer vision app that translates signs into text in real-time."
+                tech={['React', 'Laravel', 'AI']}
+                image="/images/sign-app.jpg"
+            />
+
+            <ProjectCard 
+                title="Mobile UI Kit"
+                description="A complete design system for a fintech application."
+                tech={['Figma', 'UI/UX']}
+                image="/images/mobile-ui.jpg"
+                reverse={true}
+            />
+        </section>
+
+    </main>
+</Layout>

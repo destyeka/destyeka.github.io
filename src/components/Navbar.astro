@@ -1,0 +1,59 @@
+---
+// src/components/Navbar.astro
+// No imports needed. Pure HTML.
+---
+
+<nav class="w-full py-6 px-4 md:px-8 bg-gray-950/80 backdrop-blur-md border-b border-gray-800 sticky top-0 z-50">
+  <div class="max-w-5xl mx-auto flex justify-between items-center">
+    
+    <a href="/" class="font-bold text-xl text-white tracking-tight">
+      YourName<span class="text-blue-500">.dev</span>
+    </a>
+
+    <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-400">
+      <li><a href="#work" class="hover:text-white transition-colors">Work</a></li>
+      <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
+      <li><a href="https://github.com" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
+    </ul>
+
+    <button id="menu-btn" class="md:hidden text-gray-300 focus:outline-none text-2xl">
+      ☰
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full bg-gray-950 border-b border-gray-800 p-4 shadow-xl">
+    <ul class="flex flex-col gap-4 text-sm font-medium text-gray-400">
+      <li><a href="#work" class="menu-link block hover:text-white">Work</a></li>
+      <li><a href="#about" class="menu-link block hover:text-white">About</a></li>
+      <li><a href="https://github.com" class="menu-link block hover:text-white">GitHub</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // 1. Find the elements
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const links = document.querySelectorAll('.menu-link');
+
+  // 2. Add click event to button
+  btn.addEventListener('click', () => {
+    // Toggle the 'hidden' class
+    menu.classList.toggle('hidden');
+    
+    // Optional: Change icon text based on state
+    if (menu.classList.contains('hidden')) {
+        btn.textContent = '☰';
+    } else {
+        btn.textContent = '✕';
+    }
+  });
+
+  // 3. Close menu when a link is clicked
+  links.forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.textContent = '☰';
+    });
+  });
+</script>

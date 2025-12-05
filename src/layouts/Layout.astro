@@ -1,29 +1,42 @@
 ---
+// src/layouts/Layout.astro
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
+
+import '../styles/global.css';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 	<head>
 		<meta charset="UTF-8" />
-		<meta name="description" content="Front-End Developer Portfolio" />
+		<meta name="description" content="Design Engineer Portfolio" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<title>{title}</title>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 	</head>
-	<body class="bg-gray-950 text-white"> 
+	<body class="bg-gray-950 text-white font-['Inter'] antialiased">
         <slot />
 	</body>
 </html>
 
 <style is:global>
-    /* If you need custom fonts or scrollbar hiding, put it here later */
-	html {
-		font-family: system-ui, sans-serif;
-        scroll-behavior: smooth;
-	}
+    /* Custom Scrollbar (Optional but looks nice) */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+        background: #111; 
+    }
+    ::-webkit-scrollbar-thumb {
+        background: #333; 
+        border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #555; 
+    }
 </style>
