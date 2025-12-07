@@ -1,24 +1,65 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Navbar from '../components/Navbar.astro'; // Use the Astro Navbar we made
-import ProjectCard from '../components/ProjectCard.astro';
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro"; // Use the Astro Navbar we made
+import ProjectCard from "../components/ProjectCard.astro";
 ---
 
-<Layout title="Your Name - Portfolio">
+<Layout title="Desty E. Syawfitri - Portfolio">
     <Navbar />
-    
-    <main class="max-w-5xl mx-auto px-6">
-        
-        <section class="py-24 md:py-32">
-            <h1 class="text-5xl md:text-7xl font-bold mb-6">
-                Design Engineer.
-            </h1>
-            <p class="text-xl text-gray-400 max-w-2xl">
-                I build pixel-perfect digital experiences.
-            </p>
+
+    <main class="max-w-5xl mx-auto px-6 py-2">
+        <section class="flex flex-col gap-2 items-start md:py-32">
+            <h1 class="text-5xl md:text-7xl font-bold">Takarasa</h1>
+            <div class="w-full flex justify-between items-center">
+                <p class="text-xs font-bold text-black/25">
+                    Slide picture to navigate.
+                </p>
+                <p class="text-xs font-bold text-black/25">1/3</p>
+            </div>
+            <article class="flex flex-col gap-2">
+                <img src="/src/media/takarasa1.png" alt="" class="w-fit" />
+                <div class="flex flex-col gap-0">
+                    <h1 class="font-bold text-xs text-black/25">About</h1>
+                    <p class="font-bold text-xl text-black/25 text-justify">
+                        Web based <span class="text-black"
+                            >sign language education</span
+                        > app that allow user to translate words to sign language
+                        vice versa, learn sign language, hire sign language interpreter
+                        and do community activity.
+                    </p>
+                </div>
+                <div class="flex gap-9">
+                    <div class="flex flex-col gap-0">
+                        <h1 class="font-bold text-xs text-black/25">Year</h1>
+                        <p class="font-bold text-xl text-black text-justify">
+                            2025
+                        </p>
+                    </div>
+                    <div class="flex flex-col gap-0">
+                        <h1 class="font-bold text-xs text-black/25">Client</h1>
+                        <p class="font-bold text-xl text-black text-justify">
+                            -
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col gap-0">
+                    <h1 class="font-bold text-xs text-black/25">Role</h1>
+                    <p class="font-bold text-xl text-black text-justify">
+                        Front-End Developer
+                    </p>
+                </div>
+                <div class="flex flex-col gap-0">
+                    <h1 class="font-bold text-xs text-black/25">Link</h1>
+                    <a
+                        href="https://github.com/wyzsee/takarasa"
+                        class="font-bold text-xl text-brand-orange underline"
+                        >https://github.com/wyzsee/takarasa</a
+                    >
+                </div>
+            </article>
         </section>
 
-        <section id="work">
+        <!-- <section id="work">
             <ProjectCard 
                 title="Sign Language Translator"
                 description="A computer vision app that translates signs into text in real-time."
@@ -33,7 +74,37 @@ import ProjectCard from '../components/ProjectCard.astro';
                 image="/images/mobile-ui.jpg"
                 reverse={true}
             />
+        </section> -->
+        <section class="flex w-full px-6 justify-between absolute left-0 bottom-10">
+            <div class="flex flex-col gap-2 items-start justify-end">
+                <span class="font-bold text-xl text-black">
+                    01
+                </span>
+                <span class="w-0 h-9 ml-1 outline outline-1 outline-offset-[-0.50px] outline-black"></span>
+            </div>
+            <div class="flex flex-col gap-2 items-start justify-end">
+                <div class="flex flex-col gap-0">
+                    <span class="font-bold text-xs text-black/25">
+                        02
+                    </span>
+                    <span class="font-bold text-xs text-black/25">
+                        FitAble
+                    </span>
+                </div>
+                <span class="w-0 h-4 ml-1 outline outline-1 outline-offset-[-0.50px] outline-black/25"></span>
+            </div>
+            <div class="flex flex-col gap-2 items-start justify-end">
+                <div class="flex flex-col gap-0">
+                    <span class="font-bold text-xs text-black/25">
+                        03
+                    </span>
+                    <span class="font-bold text-xs text-black/25">
+                        Tiga Furnitur
+                    </span>
+                </div>
+                <span class="w-0 h-4 ml-1 outline outline-1 outline-offset-[-0.50px] outline-black/25"></span>
+            </div>
         </section>
-
     </main>
+    
 </Layout>
