@@ -1,0 +1,44 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro"; // Use the Astro Navbar we made
+import ProjectCard from "../components/ProjectCard.astro";
+---
+
+<Layout title="Desty E. Syawfitri - Portfolio">
+    <Navbar />
+
+    <main class="max-w-5xl mx-auto px-6 pt-2 pb-6">
+        <section class="flex flex-col justify-between items-start h-[50rem] md:h-[36rem]" >
+            <h1 class="text-5xl md:text-7xl font-bold">Get in Touch</h1>
+            <article class="flex flex-col gap-8">
+                <a href="https://dribbble.com/destyesyawfitri" class="text-brand-orange underline text-xl font-bold" target="_blank">Dribbble</a>
+                <a href="https://linkedin.com/in/destyekasyawfitri" class="text-brand-orange underline text-xl font-bold" target="_blank">LinkedIn</a>
+                <a href="https://behance.net/destyesyawfitri" class="text-brand-orange underline text-xl font-bold" target="_blank">Behance</a>
+                <a href="https://instagram.com/destyestr" class="text-brand-orange underline text-xl font-bold" target="_blank">Instagram</a>
+                <a href="https://www.figma.com/design/NiFvI7XWWjHiSBjEkSwf0b/Design-Archive?node-id=0-1&t=WowFzeQsJMTMEU6r-1" class="text-brand-orange underline text-xl font-bold" target="_blank">Design Archive</a>
+            </article>
+            <a href="mailto:ekasyawfitri@gmail.com">
+                <h1 class="text-5xl text-brand-orange underline font-bold">
+                    ekasyawfitri<br>@gmail.com
+                </h1>
+            </a>
+        </section>
+
+        <!-- <section id="work">
+            <ProjectCard 
+                title="Sign Language Translator"
+                description="A computer vision app that translates signs into text in real-time."
+                tech={['React', 'Laravel', 'AI']}
+                image="/images/sign-app.jpg"
+            />
+
+            <ProjectCard 
+                title="Mobile UI Kit"
+                description="A complete design system for a fintech application."
+                tech={['Figma', 'UI/UX']}
+                image="/images/mobile-ui.jpg"
+                reverse={true}
+            />
+        </section> -->
+    </main>
+</Layout>

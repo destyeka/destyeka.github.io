@@ -1,59 +1,107 @@
 ---
 // src/components/Navbar.astro
-// No imports needed. Pure HTML.
+
+const pathname = Astro.url.pathname;
+
+const getTextClass = (path: string) => {
+  if (path === "/" && pathname === "/") return "font-bold text-xl text-black";
+  if (path !== "/" && pathname.startsWith(path))
+    return "font-bold text-xl text-black";
+  return "text-xs text-black/25 hover:text-black";
+};
+
+const isActive = (path: string) => {
+  if (path === "/" && pathname === "/") return true;
+  if (path !== "/" && pathname.startsWith(path)) return true;
+  return false;
+};
 ---
 
 <nav class="w-full bg-white sticky top-0 z-50">
-  <div class="max-w-5xl mx-auto flex justify-between items-center">
-
-    <ul class="hidden md:flex gap-6 text-sm font-medium text-gray-400">
-      <li><a href="#work" class="hover:text-white transition-colors">Work</a></li>
-      <li><a href="#about" class="hover:text-white transition-colors">About</a></li>
-      <li><a href="https://github.com" target="_blank" class="hover:text-white transition-colors">GitHub</a></li>
-    </ul>
+  <div class="max-w-5xl mx-auto flex-row gap-8 items-center">
+    <div class="hidden md:flex justify-between items-center py-8">
+      <a href="/" class="font-bold text-xl text-black tracking-tight">
+        Desty <span class="text-black/25">E. Syawfitri</span>
+      </a>
+      <ul
+        class="hidden md:flex gap-6 text-sm font-medium text-gray-400 items-center"
+      >
+        <li class="flex gap-2">
+          {isActive("/") && <img src="/media/portfoliologo.svg" alt="" />}
+          <a href="/" class={`transition-colors ${getTextClass("/")}`}>Work</a>
+        </li>
+        <li class="flex gap-2">
+          {isActive("/about") && <img src="/media/portfoliologo.svg" alt="" />}
+          <a href="/about" class={`transition-colors ${getTextClass("/about")}`}
+            >About</a
+          >
+        </li>
+        <li class="flex gap-2">
+          {
+            isActive("/contact") && (
+              <img src="/media/portfoliologo.svg" alt="" />
+            )
+          }
+          <a
+            href="/contact"
+            class={`transition-colors ${getTextClass("/contact")}`}>Contact</a
+          >
+        </li>
+      </ul>
+      <p class="text-xs font-bold">&copy; 2025</p>
+    </div>
   </div>
 
-  <div id="mobile-menu" class="flex flex-col px-6 pt-6 md:hidden"> 
+  <div id="mobile-menu" class="flex flex-col px-6 pt-6 md:hidden">
     <div class="flex justify-between items-center">
-        <a href="/" class="font-bold text-xl text-black tracking-tight">
-            Desty <span class="text-black/25">E. Syawfitri</span>
-        </a>
-        <p class="text-xs font-bold">&copy; 2025</p>
-    </div>   
+      <a href="/" class="font-bold text-xl text-black tracking-tight">
+        Desty <span class="text-black/25">E. Syawfitri</span>
+      </a>
+      <p class="text-xs font-bold">&copy; 2025</p>
+    </div>
     <ul class="flex justify-end items-center gap-4 font-bold text-black/25">
       <li class="flex gap-2">
-        <img src="/media/portfoliologo.svg" alt="">
-        <a href="#work" class="text-xl text-black menu-link block hover:text-white">Work</a></li>
-      <li><a href="#about" class="text-xs menu-link block hover:text-white">About</a></li>
-      <li><a href="https://github.com" class="text-xs menu-link block hover:text-white">Contact</a></li>
+        {isActive("/") && <img src="/media/portfoliologo.svg" alt="" />}
+        <a href="/" class={`menu-link ${getTextClass("/")}`}>Work</a>
+      </li>
+      <li class="flex gap-2">
+        {isActive("/about") && <img src="/media/portfoliologo.svg" alt="" />}
+        <a href="/about" class={`menu-link ${getTextClass("/about")}`}>About</a>
+      </li>
+      <li class="flex gap-2">
+        {isActive("/contact") && <img src="/media/portfoliologo.svg" alt="" />}
+        <a href="/contact" class={`menu-link ${getTextClass("/contact")}`}
+          >Contact</a
+        >
+      </li>
     </ul>
   </div>
 </nav>
 
 <script>
   // 1. Find the elements
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
-  const links = document.querySelectorAll('.menu-link');
+  const btn = document.getElementById("menu-btn");
+  const menu = document.getElementById("mobile-menu");
+  const links = document.querySelectorAll(".menu-link");
 
   // 2. Add click event to button
-  btn.addEventListener('click', () => {
+  btn.addEventListener("click", () => {
     // Toggle the 'hidden' class
-    menu.classList.toggle('hidden');
-    
+    menu.classList.toggle("hidden");
+
     // Optional: Change icon text based on state
-    if (menu.classList.contains('hidden')) {
-        btn.textContent = '☰';
+    if (menu.classList.contains("hidden")) {
+      btn.textContent = "☰";
     } else {
-        btn.textContent = '✕';
+      btn.textContent = "✕";
     }
   });
 
   // 3. Close menu when a link is clicked
-  links.forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.add('hidden');
-      btn.textContent = '☰';
+  links.forEach((link) => {
+    link.addEventListener("click", () => {
+      menu.classList.add("hidden");
+      btn.textContent = "☰";
     });
   });
 </script>
